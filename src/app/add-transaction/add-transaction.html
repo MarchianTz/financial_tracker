@@ -1,0 +1,32 @@
+<div class="form-container">
+  <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" placeholder="Enter description">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" formControlName="amount" placeholder="Enter amount">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="income">Income</mat-option>
+        <mat-option value="expense">Expense</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!transactionForm.valid">
+      Add Transaction
+    </button>
+  </form>
+</div>

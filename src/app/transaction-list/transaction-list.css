@@ -1,0 +1,22 @@
+.transaction-container {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-actions {
+  width: 100px;
+  text-align: center;
+}
+
+.income {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.expense {
+  color: #f44336;
+  font-weight: bold;
+}

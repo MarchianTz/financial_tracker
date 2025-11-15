@@ -1,13 +1,72 @@
-# FinancialTracker
+# Financial Tracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.8.
+A comprehensive Angular application for managing personal financial transactions with persistent storage and Indonesian Rupiah (IDR) currency support.
+
+## Quick Start
+
+### Prerequisites
+- Node.js 18+
+- Angular CLI 20.3.8+
+
+### Installation & Running
+
+```bash
+npm install
+npm start
+```
+
+Navigate to `http://localhost:4200/` in your browser.
+
+## Features
+
+- **Add Transactions**: Create income or expense records with dates and amounts
+- **View Transactions**: List all transactions in a Material Design table
+- **Delete Transactions**: Remove unwanted transaction records
+- **Persistent Storage**: All transactions auto-save to browser localStorage
+- **Indonesian Locale**: Currency formatted in Indonesian Rupiah (IDR)
+- **Responsive UI**: Material Design components for desktop and mobile
+
+## Project Structure
+
+### Components
+- **TransactionList** (`src/app/transaction-list/`): Displays all transactions in a table with delete functionality
+- **AddTransaction** (`src/app/add-transaction/`): Form component for creating new transactions with validation
+
+### Services
+- **TransactionService** (`src/app/services/transaction.service.ts`): Handles CRUD operations and localStorage persistence
+
+### Key Files
+- `src/app/app.ts`: Main app component with toolbar and routing
+- `src/app/app.routes.ts`: Route configuration for `/transactions` and `/add`
+- `src/app/models/transaction.ts`: Transaction data model interface
+
+## Documentation & Diagrams
+
+Complete documentation is available in the `docs/` directory:
+
+- **[Financial Tracker Report (PDF)](docs/Financial_Tracker_Report.pdf)** — Full report with system description, component architecture, use-case diagrams, sequence flows, and screenshots
+- `docs/use-case-descriptions.md` — Detailed use-case specifications (goals, actors, flows, postconditions)
+- `docs/sequence-to-angular-mapping.md` — Mapping between sequence diagram flows and Angular implementation
+- `docs/*.puml` — PlantUML source files for UML diagrams
+
+### View Diagrams
+
+PlantUML files can be viewed/edited in:
+- [PlantUML Online Editor](http://www.plantuml.com/plantuml/uml/)
+- VS Code with PlantUML extension (`jebbs.plantuml`)
 
 ## Development server
 
-To start a local development server, run:
+To start a local development server with hot reload, run:
 
 ```bash
 ng serve
+```
+
+or
+
+```bash
+npm start
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.

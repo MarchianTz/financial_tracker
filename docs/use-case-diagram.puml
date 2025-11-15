@@ -1,0 +1,36 @@
+@startuml FinancialTracker_UseCase
+!theme plain
+skinparam backgroundColor #f3f6fb
+skinparam actor {
+  BackgroundColor #ffffff
+  BorderColor #2b6cb0
+  FontColor #0b3954
+}
+skinparam usecase {
+  BackgroundColor #ffffff
+  BorderColor #2b6cb0
+  FontColor #0b3954
+}
+
+actor "User" as user
+
+rectangle "Financial Tracker System" {
+  usecase "View Transactions" as uc_view
+  usecase "Add Transaction" as uc_add
+  usecase "Delete Transaction" as uc_delete
+  usecase "Persist to LocalStorage" as uc_persist
+}
+
+user --> uc_view : initiates
+user --> uc_add : submits form
+user --> uc_delete : clicks delete
+uc_add .> uc_persist : includes
+uc_delete .> uc_persist : includes
+uc_view .> uc_persist : retrieves from
+
+note right of uc_persist
+  Handled by TransactionService
+  using browser localStorage
+end note
+
+@enduml

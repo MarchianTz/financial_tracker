@@ -1,0 +1,41 @@
+@startuml AddTransaction_Sequence
+!theme plain
+skinparam backgroundColor #f3f6fb
+skinparam participant {
+  BackgroundColor #ffffff
+  BorderColor #2b6cb0
+  FontColor #0b3954
+}
+skinparam arrow {
+  Color #2b6cb0
+}
+
+actor "User" as user
+participant "AddTransaction\n(View)" as view
+participant "AddTransaction\n(Controller)" as controller
+participant "TransactionService\n(Model)" as service
+database "LocalStorage" as storage
+participant "Router" as router
+
+user -> view: navigates to /add
+view -> user: render form (date, description, amount, type)
+user -> view: fills form and clicks submit
+view -> controller: onSubmit()
+controller -> controller: validate form
+alt form valid
+  controller -> service: add({date, description, amount, type})
+  service -> service: generate nextId
+  service -> storage: localStorage.setItem("ft_transactions_v1", json)
+  storage --> service: success
+  service --> controller: return new Transaction
+  controller -> router: navigate(["/transactions"])
+  router --> user: redirect to list
+  note right of user
+    Transaction saved and user
+    sees updated list on navigation
+  end note
+else form invalid
+  view --> user: show validation error
+end
+
+@enduml
